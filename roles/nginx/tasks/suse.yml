@@ -1,0 +1,16 @@
+---
+- name: install requirements
+  community.general.zypper:
+    name: "{{ item }}"
+    state: present
+    update_cache: True
+  with_items: "{{ nginx_suse_req }}"
+  become: True
+
+- name: Add nginx repository
+  community.general.zypper_repository:
+    name: nginx-repo
+    repo: "{{ nginx_suse_repo }}"
+    state: present
+    auto_import_keys: True
+  become: True

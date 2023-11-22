@@ -1,0 +1,2 @@
+---
+nginx_suse_repo: "'http://nginx.org/packages/sles/$releasever_major' nginx-stable"

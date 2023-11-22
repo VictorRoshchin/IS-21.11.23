@@ -1,0 +1,45 @@
+---
+# Данный таск только для локальной проверки, так как у меня только Ubuntu установлено в данный момент
+- name: add repo for Ubuntu 
+  ansible.builtin.import_tasks:
+    file: ubuntu.yml
+  when: ansible_lsb.id == 'Ubuntu'
+# end comment
+
+- name: add repo for RedHat family 
+  ansible.builtin.import_tasks:
+    file: redhat.yml
+  when: ansible_facts.os_family == 'RedHat'
+
+- name: add repo for SUSE family
+  ansible.builtin.import_tasks:
+    file: suse.yml
+  when: ansible_facts.os_family == 'Suse'
+
+- name: Install nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+    update_cache: True
+  notify: Restart Nginx
+  become: True 
+
+- name: create and pull index.html
+  ansible.builtin.template:
+    src: templates/index.html.j2
+    dest: "{{ nginx_template_html }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart Nginx
+  become: True
+
+- name: create and pull nginx.conf
+  ansible.builtin.template:
+    src: templates/nginx.conf.j2
+    dest: "{{ nginx_template_conf }}/{{ inventory_hostname }}.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart Nginx
+  become: True

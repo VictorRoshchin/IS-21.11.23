@@ -1,0 +1,4 @@
+---
+openjdk_url: https://download.java.net/openjdk/jdk17/ri/openjdk-17+35_linux-x64_bin.tar.gz
+openjdk_root_dir: /opt
+openjdk_to_remove: java-1.8.0-openjdk

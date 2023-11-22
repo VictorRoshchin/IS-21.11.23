@@ -1,0 +1,8 @@
+---
+- hosts: linux-server
+  gather_facts: True
+  vars_files:
+    - variables.yml
+  roles:
+    - openjdk
+    - nginx

@@ -1,0 +1,32 @@
+---
+- name: Remove java-1.8
+  ansible.builtin.package:
+    name: "{{ openjdk_to_remove }}"
+    state: absent
+
+- name: Download Java-17
+  ansible.builtin.get_url:
+    url: "{{ openjdk_url }}"
+    dest: "{{ openjdk_dest }}"
+    owner: root
+    group: root
+    mode: 0755
+  become: True
+
+- name: Unpack archive
+  ansible.builtin.unarchive:
+    src: "{{ openjdk_dest }}"
+    dest: "{{ openjdk_root_dir }}"
+    remote_src: True
+
+- name: Uninstall archive 
+  ansible.builtin.file:
+    path: "{{ openjdk_dest }}"
+    state: absent 
+  become: True
+
+- name: Export JDK path to globally path / $PATH
+  ansible.builtin.shell: \
+    echo "export PATH={{ openjdk_bin }}:$PATH" > {{ openjdk_env_path }} ;
+    . {{ openjdk_env_path }}
+  become: True

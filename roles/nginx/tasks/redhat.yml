@@ -1,0 +1,14 @@
+---
+- name: install requirements
+  ansible.builtin.yum:
+    name: yum-utils
+    state: present
+
+- name: add repo for RedHat/CentOS 
+  ansible.builtin.copy:
+    src: files/nginx-rhel.repo
+    dest: /etc/yum.repos.d/
+    owner: root
+    group: root
+    mode: 0644
+  become: True

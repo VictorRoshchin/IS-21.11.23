@@ -1,0 +1,23 @@
+---
+- name: install requirements
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+    update_cache: True
+  become: True
+  with_items: "{{ nginx_apt_req }}"
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  ansible.builtin.get_url:
+    url: "{{ nginx_apt_key }}"
+    dest: /usr/share/keyrings/nginx_signing.key
+    owner: root
+    group: root
+    mode: 0755
+  become: True 
+
+- name: Add Nginx Repository
+  ansible.builtin.apt_repository:
+    repo: "{{ nginx_apt_repo }}"
+    state: present
+  become: True

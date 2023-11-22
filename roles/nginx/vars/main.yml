@@ -1,0 +1,19 @@
+---
+nginx_template_html: /var/www/html/index.html
+nginx_template_conf: /etc/nginx/conf.d/
+
+nginx_suse_req: 
+  - curl
+  - ca-certificates
+  - gpg2
+
+# Данный блок переменных только для локальной проверки, так как у меня только Ubuntu установлено в данный момент
+nginx_apt_req: 
+  - curl
+  - gnupg2
+  - ca-certificates 
+  - lsb-release 
+  - ubuntu-keyring
+nginx_apt_key: https://nginx.org/keys/nginx_signing.key
+nginx_apt_repo: deb [signed-by=/usr/share/keyrings/nginx_signing.key] http://nginx.org/packages/ubuntu {{ ansible_distribution_release }} nginx
+# end comment

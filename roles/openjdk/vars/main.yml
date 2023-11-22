@@ -1,0 +1,4 @@
+---
+openjdk_dest: "{{ openjdk_root_dir }}/openjdk-archive.tar.gz"
+openjdk_bin: "{{ openjdk_root_dir }}/jdk-17/bin"
+openjdk_env_path: /etc/profile.d/java.sh
