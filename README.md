@@ -1,2 +1,14 @@
-[openjdk](roles/openjdk/README.md)
-[nginx](roles/nginx/README.md)
+# Linux Server
+_Данный репозитерий является тестовым заданием от комании **[Infinnity Solutions](https://infinnity.ru/ "Infinnity Solutions")**_
+
+### Задачи
+
+1. С помощью Ansible обновить (т.е. удалить старую версию и установить новую) JDK до openjdk-17, взятую с https://openjdk.java.net/projects/jdk/17/ (с прописыванием системных путей к бинарникам в PATH).
+2. Установить nginx текущей стабильной версии.
+3. Создать файл index.html, в котором содержится IP-адрес сервера, на котором он находится. Для выяснения IP-адреса желательно использовать штатные средства Ansible.
+4. Раздать данный файл через nginx.
+
+### Решение
+В репозитории представлены 2 роли
+1. [openjdk](roles/openjdk/README.md) - обновления пакета Oracle JDK (задача №1)
+2. [nginx](roles/nginx/README.md) - установка и конфигурирование текущей стабильной версии nginx (задачи №2, 3, 4)
