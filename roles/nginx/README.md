@@ -1,6 +1,6 @@
 Роль nginx / The nginx Role
 =========
-Роль станавливает стабильную текущую версию nginx согласно инструкции с официального сайта [nginx](https://nginx.org/ru/linux_packages.html)
+Роль устанавливает стабильную текущую версию nginx согласно инструкции с официального сайта [nginx](https://nginx.org/ru/linux_packages.html)
 
 The role installs the stable current version of nginx according to the instructions from the official website [nginx](https://nginx.org/ru/linux_packages.html)
 
